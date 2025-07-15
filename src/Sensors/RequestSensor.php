@@ -43,7 +43,7 @@ final class RequestSensor
         /** @var list<string> */
         $routeMethods = $route?->methods() ?? [];
 
-        $operationName = (string) $request->input('operationName') ?? null;
+        $operationName = is_string($request->input('operationName')) ? $request->input('operationName') : null;
 
         sort($routeMethods);
 
