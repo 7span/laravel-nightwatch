@@ -160,11 +160,11 @@ $server = new Server(
     onInvalidPayloadVersion: static function () use ($info, $loop, $ingest) {
         $info('Incoming payload version has changed');
 
-        $ingest->forceDigest()->finally(static function () use ($info, $loop) {
-            $loop->stop();
+        // $ingest->forceDigest()->finally(static function () use ($info, $loop) {
+        //     $loop->stop();
 
-            $info('Shutting down');
-        });
+        //     $info('Shutting down');
+        // });
     },
     onInvalidTokenHash: static function () use ($info, $loop, $ingest) {
         $info('Incoming token hash mismatch! Check your application/agent configuration.');
