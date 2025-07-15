@@ -1,5 +1,5 @@
 {
-    "name": "laravel/nightwatch",
+    "name": "sevenspan/laravel-nightwatch",
     "description": "The official Laravel Nightwatch package.",
     "keywords": [
         "laravel",
