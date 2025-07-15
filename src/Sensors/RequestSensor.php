@@ -52,7 +52,7 @@ final class RequestSensor
         $routePath = match ($routeUri = $route?->uri()) {
             null => '',
             '/' => '/',
-            default =>  $operationName
+            default => $operationName
                 ? "/{$routeUri}/{$operationName}"
                 : "/{$routeUri}",
         };
@@ -68,7 +68,7 @@ final class RequestSensor
         return [
             $record = new RequestRecord(
                 method: $request->getMethod(),
-                url: $request->getSchemeAndHttpHost() . $request->getBaseUrl() . $request->getPathInfo() . (strlen($query) > 0 ? "?{$query}" : ''),
+                url: $request->getSchemeAndHttpHost().$request->getBaseUrl().$request->getPathInfo().(strlen($query) > 0 ? "?{$query}" : ''),
                 routeName: $route?->getName() ?? '',
                 routeMethods: $routeMethods,
                 routeDomain: $routeDomain,
@@ -87,7 +87,7 @@ final class RequestSensor
                     'timestamp' => $this->requestState->timestamp,
                     'deploy' => $this->requestState->deploy,
                     'server' => $this->requestState->server,
-                    '_group' => hash('xxh128', implode('|', $record->routeMethods) . ",{$record->routeDomain},{$record->routePath}"),
+                    '_group' => hash('xxh128', implode('|', $record->routeMethods).",{$record->routeDomain},{$record->routePath}"),
                     'trace_id' => $this->requestState->trace,
                     'user' => $this->requestState->user->id(),
                     // --- //
