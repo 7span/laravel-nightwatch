@@ -7,3 +7,6 @@
 /phpunit.xml
 /tests/database.sqlite*
 /vendor
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore

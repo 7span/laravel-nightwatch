@@ -157,14 +157,8 @@ $server = new Server(
     onServerError: static fn (string $message) => $error("Server error: {$message}"),
     onConnectionError: static fn (string $message) => $error("Connection error: {$message}"),
     onPayloadReceived: $ingest->write(...),
-    onInvalidPayloadVersion: static function () use ($info, $loop, $ingest) {
+    onInvalidPayloadVersion: static function () use ($info) {
         $info('Incoming payload version has changed');
-
-        $ingest->forceDigest()->finally(static function () use ($info, $loop) {
-            $loop->stop();
-
-            $info('Shutting down');
-        });
     },
     onInvalidTokenHash: static function () use ($info, $loop, $ingest) {
         $info('Incoming token hash mismatch! Check your application/agent configuration.');
