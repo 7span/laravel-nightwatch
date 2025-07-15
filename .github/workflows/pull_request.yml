@@ -160,7 +160,7 @@ jobs:
     needs:
       - package_static_analysis
       - agent_static_analysis
-      # - coding_standards
+      - coding_standards
     outputs:
       agent-committed: ${{ steps.commit-agent.outputs.committed }}
     defaults:
